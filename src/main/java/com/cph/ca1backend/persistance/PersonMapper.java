@@ -1,6 +1,6 @@
-package com.cph.CA1BackendMVN.persistance;
+package com.cph.ca1backend.persistance;
 
-import com.cph.CA1BackendMVN.entities.Person;
+import com.cph.ca1backend.entities.Person;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.cph.CA1BackendMVN.entities;
+package com.cph.ca1backend.entities;
 
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Column;

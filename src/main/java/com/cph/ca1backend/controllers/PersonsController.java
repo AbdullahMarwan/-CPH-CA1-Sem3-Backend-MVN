@@ -1,8 +1,9 @@
-package com.cph.CA1BackendMVN.controllers;
+package com.cph.ca1backend.controllers;
 
-import com.cph.CA1BackendMVN.entities.Person;
-import com.cph.CA1BackendMVN.persistance.PersistenceManager;
-import com.cph.CA1BackendMVN.persistance.PersonMapper;
+import com.cph.ca1backend.constants.RestConstants;
+import com.cph.ca1backend.entities.Person;
+import com.cph.ca1backend.persistance.PersistenceManager;
+import com.cph.ca1backend.persistance.PersonMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("persons")
 public class PersonsController {
-    private static final String APPLICATION_JSON = "application/json";
-
-    private final PersistenceManager persistenceManager = new PersistenceManager("pu");
+    private final PersistenceManager persistenceManager = new PersistenceManager("persistenceunit");
     private final PersonMapper personMapper = new PersonMapper(persistenceManager);
 
     @GetMapping(value = "test")
@@ -23,7 +22,7 @@ public class PersonsController {
     @RequestMapping(
             value = "/",
             method = RequestMethod.GET,
-            produces = APPLICATION_JSON
+            produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
     )
     public List<Person> getAllPersons() {
         return personMapper.getAllPeople();
@@ -32,8 +31,8 @@ public class PersonsController {
     @RequestMapping(
             value = "/",
             method = RequestMethod.POST,
-            consumes = APPLICATION_JSON,
-            produces = APPLICATION_JSON
+            consumes = RestConstants.MEDIA_TYPE_APPLICATION_JSON,
+            produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
     )
     public void createPerson(@RequestBody Person person) {
         System.out.println("Hello");

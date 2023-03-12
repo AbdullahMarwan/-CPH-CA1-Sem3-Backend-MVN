@@ -1,5 +1,7 @@
-package com.cph.CA1BackendMVN.persistance;
+package com.cph.ca1backend.persistance;
 
+
+import com.cph.ca1backend.entities.Phone;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
