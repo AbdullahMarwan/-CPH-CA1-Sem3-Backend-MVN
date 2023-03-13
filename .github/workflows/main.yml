@@ -9,7 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Step 1 - Checkout main branch from Github
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_SECRETS}}" > .env
+      
+      - name: Checkout main branch from Github
         uses: actions/checkout@v2
       
       - name: Set up JDK 17
