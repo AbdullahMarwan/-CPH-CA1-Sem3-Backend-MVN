@@ -1,16 +1,30 @@
-package com.cph.ca1backend.persistance;
+package com.cph.ca1backend.persistance.person;
 
 import com.cph.ca1backend.entities.Person;
-import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class PersonMapper {
-    PersistenceManager persistenceManager;
+@Service
+public class PersonService {
+    @Autowired
+    private PersonRepository personRepository;
 
-    public PersonMapper(PersistenceManager persistenceManager) {
+    public List<Person> getAllPersons() {
+        return personRepository.findAll();
+    }
+
+    public Person createPerson(Person person) {
+        return personRepository.save(person);
+    }
+
+    public void deletePerson(Integer id) {
+        personRepository.deleteById(id);
+    }
+
+    /*
+     public PersonMapper(PersistenceManager persistenceManager) {
         this.persistenceManager = persistenceManager;
     }
 
@@ -33,4 +47,5 @@ public class PersonMapper {
         persistenceManager.getEntityManager().persist((person));
         persistenceManager.entityTransaction().commit();
     }
+     */
 }

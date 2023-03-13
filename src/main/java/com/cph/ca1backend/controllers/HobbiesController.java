@@ -1,47 +1,50 @@
 package com.cph.ca1backend.controllers;
 
-import com.cph.ca1backend.entities.Person;
 import com.cph.ca1backend.constants.RestConstants;
-import com.cph.ca1backend.persistance.person.PersonService;
+import com.cph.ca1backend.entities.Hobby;
+import com.cph.ca1backend.persistance.hobby.HobbyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("persons")
-@Tag(name = "Persons", description = "Persons API")
-public class PersonsController {
+@RequestMapping("hobbies")
+@Tag(name = "Hobbies", description = "Hobbies API")
+public class HobbiesController {
     @Autowired
-    private PersonService personService;
+    private HobbyService hobbyService;
 
-    @Operation(summary = "Get all persons")
+    @Operation(summary = "Get all hobbies")
     @RequestMapping(
             value = "/",
             method = RequestMethod.GET,
             produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
     )
-    public List<Person> getAllPersons() {
-        return personService.getAllPersons();
+    public List<Hobby> getAllHobbies() {
+        return hobbyService.getAllHobbies();
     }
 
-    @Operation(summary = "Creates a person")
+    @Operation(summary = "Create a Hobby")
     @RequestMapping(
             value = "/",
             method = RequestMethod.POST,
             consumes = RestConstants.MEDIA_TYPE_APPLICATION_JSON,
             produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
     )
-    public void createPerson(@RequestBody Person person) {
+    public void createHobby(@RequestBody Hobby hobby) {
         System.out.println("Hello");
     }
 
 //    @GetMapping
 //    @Path("/{id}")
 //    @Produces(MediaType.APPLICATION_JSON)
-//    public Person getPersonById(@PathParam("id") int id) {
+//    public Hobby getHobbyById(@PathParam("id") int id) {
 //        return personMapper.getById(id);
 //    }
 //
@@ -49,7 +52,7 @@ public class PersonsController {
 //    @Path("/{id}")
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    @Produces(MediaType.APPLICATION_JSON)
-//    public PersonDTO updatePerson(@PathParam("id") int id, PersonDTO person) {
-//        return personsFacade.updatePerson(id, person);
+//    public HobbyDTO updateHobby(@PathParam("id") int id, HobbyDTO person) {
+//        return hobbiesFacade.updateHobby(id, person);
 //    }
 }
