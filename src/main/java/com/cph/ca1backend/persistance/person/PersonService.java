@@ -2,9 +2,11 @@ package com.cph.ca1backend.persistance.person;
 
 import com.cph.ca1backend.entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -23,29 +25,13 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
-    /*
-     public PersonMapper(PersistenceManager persistenceManager) {
-        this.persistenceManager = persistenceManager;
+    public Optional<Person> getPersonById(Integer id) {
+        Person examplePerson = new Person();
+        examplePerson.setId(id);
+
+        Example<Person> example = Example.of(examplePerson);
+        Optional<Person> person = personRepository.findOne(example);
+
+        return person;
     }
-
-    public Person getSpecificPerson(int personId) {
-        Logger.getLogger("web").log(Level.INFO, "");
-
-        return persistenceManager.getEntityManager().find(Person.class, personId);
-    }
-
-    public List<Person> getAllPeople() {
-        TypedQuery<Person> query = persistenceManager.getEntityManager().createNamedQuery("getAllPeople", Person.class);
-
-        return query.getResultList();
-    }
-
-    public void create(Person person) {
-        Logger.getLogger("web").log(Level.INFO, "");
-
-        persistenceManager.entityTransaction().begin();
-        persistenceManager.getEntityManager().persist((person));
-        persistenceManager.entityTransaction().commit();
-    }
-     */
 }

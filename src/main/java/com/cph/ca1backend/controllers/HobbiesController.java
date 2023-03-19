@@ -39,18 +39,4 @@ public class HobbiesController {
         System.out.println("Hello");
     }
 
-//    @GetMapping
-//    @Path("/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Hobby getHobbyById(@PathParam("id") int id) {
-//        return personMapper.getById(id);
-//    }
-//
-//    @PUT
-//    @Path("/{id}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public HobbyDTO updateHobby(@PathParam("id") int id, HobbyDTO person) {
-//        return hobbiesFacade.updateHobby(id, person);
-//    }
 }

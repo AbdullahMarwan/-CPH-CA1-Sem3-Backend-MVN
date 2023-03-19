@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("persons")
@@ -34,17 +35,21 @@ public class PersonsController {
             consumes = RestConstants.MEDIA_TYPE_APPLICATION_JSON,
             produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
     )
-    public void createPerson(@RequestBody Person person) {
-        System.out.println("Hello");
+    public Person createPerson(@RequestBody Person person) {
+        return personService.createPerson(person);
     }
 
-//    @GetMapping
-//    @Path("/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Person getPersonById(@PathParam("id") int id) {
-//        return personMapper.getById(id);
-//    }
-//
+    @Operation(summary = "Get Person by id")
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET,
+            produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
+    )
+    public Optional<Person> getPersonById(@PathVariable Integer id) {
+        return personService.getPersonById(id);
+    }
+
+//TODO
 //    @PUT
 //    @Path("/{id}")
 //    @Consumes(MediaType.APPLICATION_JSON)
