@@ -35,8 +35,8 @@ public class HobbiesController {
             consumes = RestConstants.MEDIA_TYPE_APPLICATION_JSON,
             produces = RestConstants.MEDIA_TYPE_APPLICATION_JSON
     )
-    public void createHobby(@RequestBody Hobby hobby) {
-        System.out.println("Hello");
+    public Hobby createHobby(@RequestBody Hobby hobby) {
+        return hobbyService.createHobby(hobby);
     }
 
 }

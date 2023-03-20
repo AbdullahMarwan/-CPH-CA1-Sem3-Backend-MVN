@@ -15,8 +15,8 @@ public class HobbyService {
         return hobbyRepository.findAll();
     }
 
-    public Hobby createHobby(Hobby person) {
-        return hobbyRepository.save(person);
+    public Hobby createHobby(Hobby hobby) {
+        return hobbyRepository.save(hobby);
     }
 
     public void deleteHobby(Integer id) {
