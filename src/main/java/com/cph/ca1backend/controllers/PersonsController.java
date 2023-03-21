@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("persons")
 @Tag(name = "Persons", description = "Persons API")
 public class PersonsController {
